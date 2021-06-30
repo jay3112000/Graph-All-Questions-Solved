@@ -11,3 +11,5 @@ All the beginner to expert graph questions solved using adjacency matrix
 4.BFS
 
 5.Topological sort
+
+6. Path exist or not

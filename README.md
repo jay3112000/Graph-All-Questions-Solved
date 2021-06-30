@@ -1,5 +1,5 @@
 # Graph-All-Questions-Solved
-All the beginner to expert graph questions solved using adjacency list and matrix
+All the beginner to expert graph questions solved using adjacency matrix
 
 
 1.build graph

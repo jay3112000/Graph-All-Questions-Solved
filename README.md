@@ -13,3 +13,5 @@ All the beginner to expert graph questions solved using adjacency matrix
 5.Topological sort
 
 6.Path exist or not
+
+7.Detect cycle

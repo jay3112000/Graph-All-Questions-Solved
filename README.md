@@ -15,3 +15,5 @@ All the beginner to expert graph questions solved using adjacency matrix
 6.Path exist or not
 
 7.Detect cycle
+
+8.Number of Islands

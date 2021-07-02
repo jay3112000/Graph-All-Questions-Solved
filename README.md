@@ -17,3 +17,8 @@ All the beginner to expert graph questions solved using adjacency matrix
 7.Detect cycle
 
 8.Number of Islands
+
+9.All paths from source to destination
+
+10.Shortest from src to dest
+ 

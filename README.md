@@ -21,4 +21,8 @@ All the beginner to expert graph questions solved using adjacency matrix
 9.All paths from source to destination
 
 10.Shortest from src to dest
+
+11.Bipartite Graph
+
+12.Covid spread/ Rotten Tomatoes
  

@@ -151,12 +151,6 @@ class Graph:
                     visited[x+row[k]][y+col[k]]=True
                     q.append((x+row[k],y+col[k]))
 
-
-
-
-
-
-
     def Number_Islands(self):
         mat=[
             [1,1,1,0],
@@ -177,6 +171,49 @@ class Graph:
                     islands+=1
         print(islands)
 
+    def isBipartite(self,root):
+        color=[-1]*self.size
+        color[root]=1
+        q=[]
+        q.append(root)
+        while len(q)>0:
+            u=q.pop(0)
+            for i in range(self.size):
+                if self.adj[u][i]==1:
+                    if color[i]==-1:
+                        color[i]=1-color[u]
+                        q.append(i)
+                    if color[i]==color[u]:
+                        return False
+        return True
+
+    def covid_spread(self):
+        mat=[
+            [2,1,0,2,1],
+            [1,0,1,2,1],
+            [1,0,0,2,1],
+
+        ]
+        q=[]
+        l=0
+        drn = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+        for i in range(len(mat)):
+            for j in range(len(mat[0])):
+                if mat[i][j]==2:
+                    q.append((i,j,l))
+        while len(q)!=0:
+            x,y,l=q.pop(0)
+            for i,j in drn:
+                if x+i<len(mat) and y+j<len(mat[0]) and x+i>=0 and y+j>=0 and mat[x+i][y+j]==1:
+                    mat[x+i][y+j]=2
+                    q.append((x+i,y+j,l+1))
+
+        for i in range(len(mat)):
+            for j in range(len(mat[0])):
+                if mat[i][j]==1:
+                    return -1
+        return l
+
 
 
 
@@ -189,9 +226,7 @@ def main():
         for i in range(e):
             u, v = map(int, input().split())
             g.add_edge(u, v)
-        g.Number_Islands()
-
-
+        print(g.covid_spread())
 
 if __name__ == '__main__':
     main()

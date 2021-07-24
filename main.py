@@ -213,6 +213,62 @@ class Graph:
                 if mat[i][j]==1:
                     return -1
         return l
+    def detect_cycle_directed_util(self,vis,stack,i):
+        vis[i]=True
+        stack[i]=True
+        for j in range(self.size):
+            if vis[j]==False:
+                if self.detect_cycle_directed_util(vis, stack, j):
+                    return True
+            elif stack[j]==True:
+                return True
+        stack[j]=False
+        return False
+
+    def detect_cycle_directed(self):
+        vis=[False]*self.size
+        stack=[False]*self.size
+        for i in range(self.size):
+            if vis[i]==False:
+                if self.detect_cycle_directed_util(vis,stack,i)==True:
+                    return True
+        return False
+    def isValid2(self,mat,visited,i,j,N,M):
+        if i>=0 and j>=0 and i<N and j<M and visited[i][j]==False and mat[i][j]==1:
+            return  True
+        return False
+
+
+    def largest_area_util(self,mat,visited,row,col,count,N,M):
+        visited[row][col]=True
+
+        r= [1, 1, 0, -1, -1, 0, -1, 1]
+        c = [-1, 0, -1, 0, -1, 1, 1, 1]
+        for k in range(8):
+            if self.isValid2(mat,visited,row+r[k],col+c[k],N,M):
+                count[0]+=1
+                self.largest_area_util(mat, visited, row+r[k], col+c[k], count,N,M)
+
+    def largest_area(self):
+        mat = [
+            [0, 0, 1, 1, 0],
+            [1, 0, 1, 1, 0],
+            [0, 1, 0, 0, 0],
+            [0, 0, 0, 0, 1]
+        ]
+        n=len(mat)
+        N=4
+        M=5
+        res=-99999
+
+        visited = [[False for x in range(M)] for y in range(N)]
+        for row in range(N):
+            for col in range(M):
+                if mat[row][col]==1 and visited[row][col]==False:
+                    count=[1]
+                    self.largest_area_util(mat,visited,row,col,count,N,M)
+                    res=max(res,count[0])
+        return res
 
 
 
@@ -226,7 +282,8 @@ def main():
         for i in range(e):
             u, v = map(int, input().split())
             g.add_edge(u, v)
-        print(g.covid_spread())
+        x=g.largest_area()
+        print(x)
 
 if __name__ == '__main__':
     main()

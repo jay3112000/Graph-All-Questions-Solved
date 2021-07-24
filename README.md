@@ -25,4 +25,8 @@ All the beginner to expert graph questions solved using adjacency matrix
 11.Bipartite Graph
 
 12.Covid spread/ Rotten Tomatoes
+
+13.Detect cycle directed
+
+14.Largest area of 1's
  
